@@ -33,26 +33,13 @@
 </head>
 <body>
   <h1>Selamat Datang di NOME</h1>
-  <p>Masuk dengan Sidik Jari Anda</p>
-  <button onclick="authenticate()">Masuk dengan Sidik Jari</button>
+  <p>Simulasi Sidik Jari Anda</p>
+  <button onclick="authenticate()">Masuk</button>
 
   <script>
-    async function authenticate() {
-      try {
-        const publicKey = {
-          challenge: new Uint8Array([1,2,3,4,5,6,7,8,9]),
-          timeout: 60000,
-          allowCredentials: [],
-          userVerification: "required"
-        };
-        const credential = await navigator.credentials.get({ publicKey });
-        if (credential) {
-          window.location.href = "spaceofpeace.html";
-        }
-      } catch (err) {
-        alert("Autentikasi gagal atau tidak didukung.");
-        console.error(err);
-      }
+    function authenticate() {
+        alert("Simulasi: Sidik jari berhasil.");
+        window.location.href = "spaceofpeace.html";
     }
   </script>
 </body>
