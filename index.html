@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOME - Login</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #141e30, #243b55);
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #00c9ff;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Selamat Datang di NOME</h1>
+  <p>Masuk dengan Sidik Jari Anda</p>
+  <button onclick="authenticate()">Masuk dengan Sidik Jari</button>
+
+  <script>
+    async function authenticate() {
+      try {
+        const publicKey = {
+          challenge: new Uint8Array([1,2,3,4,5,6,7,8,9]),
+          timeout: 60000,
+          allowCredentials: [],
+          userVerification: "required"
+        };
+        const credential = await navigator.credentials.get({ publicKey });
+        if (credential) {
+          window.location.href = "spaceofpeace.html";
+        }
+      } catch (err) {
+        alert("Autentikasi gagal atau tidak didukung.");
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
